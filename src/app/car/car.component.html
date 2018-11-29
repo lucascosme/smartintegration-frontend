@@ -1,0 +1,141 @@
+<section class="content">
+  <section class="invoice container-border-radius-top">
+
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+                <i class="fa fa-car"></i> Controle de Veiculos
+              </h2>
+        </div>
+      </div>
+
+      <div class="row invoice-info">
+
+        <div class="col-sm-6 col-xs-12">
+
+          <div class="input-group">
+            <input disabled type="text" class="form-control" placeholder="Digite a placa do veiculo que deseja buscar">
+            <div class="input-group-btn">
+              <button disabled type="button" class="btn btn-success"><i class="fa fa-search"></i> Pesquisar</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row invoice-info">
+        <br />
+        <div class="col-xs-12">
+          <p class="lead">Dados do Veiculo:</p>
+        </div>
+        <div class="col-sm-2 col-xs-12">
+          <div class="form-group" align="center">
+            <label><i>* Placa</i></label>
+            <input type="text" class="form-control" placeholder="Placa">
+          </div>
+        </div>
+
+        <div class="col-sm-2 col-xs-6" align="center">
+        
+          <smt-select [brands]="brands" [label]="['Marca']" (change)="getCarModel($event.id)"></smt-select>
+
+        </div>
+        <div class="col-sm-4 col-xs-6">
+
+          <div class="form-group inputcontainer" align="center">
+            <label><i>Modelo</i></label>
+            <select class="form-control">
+                <option value="" *ngIf="hasCarModel">Selecione um modelo</option>
+                <option *ngFor="let carModel of carModels" [value]="carModel.id">{{carModel?.name}}</option>
+            </select>
+            <div class="icon-container">
+              <i [class.loader]="!hasCarModel"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1 col-xs-6">
+          <div class="form-group" align="center">
+            <label><i>Cor</i></label>
+            <input type="text" class="form-control" placeholder="Cor">
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+          <div class="form-group" align="center">
+            <label><i>Ano Fab. / Ano Mod.</i></label>
+            <input type="text" class="form-control" placeholder="Ano Fab. / Ano Mod.">
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <div class="col-sm-2 col-xs-12">
+          <div class="form-group" align="center">
+            <label><i>Versão</i></label>
+            <input type="text" class="form-control" placeholder="Versão">
+          </div>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+          <div class="form-group" align="center">
+            <label><i>Combustível</i></label>
+            <input type="text" class="form-control" placeholder="Combustível">
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-xs-6">
+          <div class="form-group" align="center">
+            <label><i>Chassi</i></label>
+            <input type="text" class="form-control" placeholder="Chassi">
+          </div>
+        </div>
+        <div class="col-sm-5 col-xs-6">
+
+            <smt-autocomplete></smt-autocomplete>
+
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-sm-10">
+          <span><i class="fa fa-warning"></i><b>     Atenção!</b> Para prosseguir com o cadastro é necessário informar um cliente, caso seja um cliente novo clique no botão "Cadastrar cliente".</span>
+        </div>
+        <div class="col-sm-2">
+          <a (click)="isNewCliente()" class="btn btn-success pull-right"><i class="fa fa-save"></i> Cadastrar cliente</a>
+        </div>
+      </div>
+
+
+    </form>
+
+  </section>
+  <!-- FIM DO SECTION CONTROLE VEICULOS-->
+  <section class="invoice container-border-radius-bottom" *ngIf="newCliente">
+
+    <!-- Formulario para cadastro do cliente -->
+    <smt-cliente></smt-cliente>
+
+    <div class="row">
+      <br />
+      <div class="col-xs-10">
+        <button class="btn btn-warning"><i class="fa fa-plus"></i> Vincular mais cliente</button>
+      </div>
+      <div class="col-xs-2 pull-right">
+        <button class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</button>
+        <button class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </section>
+</section>

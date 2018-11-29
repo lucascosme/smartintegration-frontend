@@ -1,0 +1,7 @@
+<label><i>{{label}}</i></label>
+<div class="input-group-btn select inputcontainer form-group" id="select1">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="selected">Selecione uma marca</span> <span class="caret"></span></button>
+  <ul class="dropdown-menu option container-select" role="menu">
+  <li id="brand.id" *ngFor="let brand of brands" class="item-select"><a>{{brand?.name}}</a></li>
+  </ul>
+</div>
